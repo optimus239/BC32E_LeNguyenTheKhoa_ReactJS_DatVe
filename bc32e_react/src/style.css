@@ -9,6 +9,7 @@
   height: 100px;
   position: relative;
   top: -70px;
+  box-shadow: 4px 31px 6px -9px rgb(245 243 243 / 17%);
 }
 
 .bgflim {
