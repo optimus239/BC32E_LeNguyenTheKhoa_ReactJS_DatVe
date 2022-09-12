@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 class ThongTinDatVe extends Component {
   render() {
     const { danhSachGheDangDat, delSeat } = this.props;
+    let tongTien = 0;
     return (
       <div>
         <div className="text-left">
@@ -15,22 +16,25 @@ class ThongTinDatVe extends Component {
         <div className="text-left">
           <button className="gheChuaDat"></button> Ghế chưa đặt
         </div>
-        <table className="price text-left">
+        <table className="price text-left font-black">
           <thead>
             <tr>
-              <th>Số ghế</th>
-              <th>Giá</th>
-              <th>Hủy</th>
+              <td className="pl-2">Số ghế</td>
+              <td className="pl-2">Giá</td>
+              <td className="pl-2">Hủy</td>
             </tr>
           </thead>
           <tbody>
             {danhSachGheDangDat.map((value) => {
               return (
                 <tr key={value.soGhe}>
-                  <td>{value.soGhe}</td>
-                  <td>{value.gia}</td>
+                  <td className="text-amber-500 pl-2">{value.soGhe}</td>
+                  <td className="text-amber-500 pl-2">
+                    {value.gia.toLocaleString()}
+                  </td>
                   <td>
                     <button
+                      className=" text-red-600 pl-2"
                       onClick={() => {
                         this.props.dispatch({
                           type: "HUY_VE",
@@ -45,6 +49,19 @@ class ThongTinDatVe extends Component {
               );
             })}
           </tbody>
+          <tfoot>
+            <tr>
+              <td className="pl-2">Tổng tiền</td>
+              <td className="pl-2">
+                {danhSachGheDangDat
+                  .reduce((value1, value2) => {
+                    return (value1 += value2.gia);
+                  }, 0)
+                  .toLocaleString()}
+              </td>
+              <td></td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     );
@@ -68,4 +85,4 @@ const mapStateToProps = (rootReducers) => {
 //   };
 // };
 
-export default connect(mapStateToProps, null)(ThongTinDatVe);
+export default connect(mapStateToProps)(ThongTinDatVe);

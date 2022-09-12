@@ -14,11 +14,15 @@
 .bgflim {
   z-index: -1;
   filter: brightness(0.5);
+  height: 100%;
+  object-fit: cover;
 }
 
-.table {
-  top: 65px;
-  text-align: center;
+.tableSeat {
+  top: 70px;
+  left: -51px;
+  width: 750px;
+  /* text-align: center; */
 }
 
 .num {
@@ -52,19 +56,7 @@
   margin-bottom: 1%;
   font-size: 30px;
   color: yellow;
-}
-
-.seatS {
-  border: 3px solid orange;
-  width: 45px;
-  height: 35px;
-  font-size: 12px;
-  margin-left: 2%;
-  margin-bottom: 1%;
-  border-radius: 5px;
-  margin-right: 10px;
-  cursor: pointer;
-  background-color: orange;
+  pointer-events: none;
 }
 
 .gheDaDat {
@@ -75,6 +67,8 @@
   border-radius: 5px;
   width: 45px;
   height: 35px;
+  margin-right: 10px;
+  /* pointer-events: none; */
 }
 
 .gheChuaDat {
@@ -97,20 +91,19 @@
   height: 35px;
 }
 
-.table tbody tr:first-child td,
-.table tbody tr:first-child .seatS {
+.tableSeat div:first-child button {
+  border: none;
   width: 45px;
   height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
   background: none;
-  border: none;
-  margin-left: 2%;
-  margin-bottom: 1%;
-  font-size: 30px;
   color: yellow;
+  font-size: 30px;
   pointer-events: none;
 }
-x .price th,
+.price th,
 .price td {
   border: 1px solid white;
-  padding-right: 65px;
+  padding-right: 40px;
 }

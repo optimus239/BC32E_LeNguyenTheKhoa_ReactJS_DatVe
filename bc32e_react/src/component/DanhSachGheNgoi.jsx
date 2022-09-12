@@ -6,39 +6,40 @@ class DanhSachGheNgoi extends Component {
     const { data, handleSeat, danhSachGheDangDat } = this.props;
     return (
       <div>
-        <table className="table relative">
-          <tbody>
-            {data.map((item) => {
-              return (
-                <tr key={item.hang}>
-                  <td className="rowsSeat">{item.hang}</td>
-                  {item.danhSachGhe.map((value, index) => {
-                    let classGheDaDat =
-                      value.daDat === true ? "gheDaDat" : "gheChuaDat";
-                    let classGheDangDat = "";
-                    let indexGheDangDat = danhSachGheDangDat.findIndex(
-                      (gheDD) => gheDD.soGhe === value.soGhe
+        <div className="relative tableSeat">
+          {data.map((item) => {
+            return (
+              <div key={item.hang}>
+                <button className="rowsSeat">{item.hang}</button>
+                {item.danhSachGhe.map((value) => {
+                  let classGheDaDat =
+                    value.daDat === true ? "gheDaDat" : "gheChuaDat";
+                  let classGheDangDat = "";
+                  let indexGheDangDat = danhSachGheDangDat.findIndex(
+                    (gheDD) =>
+                      gheDD.soGhe === value.soGhe && value.daDat === false
+                  );
+                  console.log("ds", danhSachGheDangDat);
+                  if (indexGheDangDat !== -1) {
+                    classGheDangDat = "gheDangChon";
+                  }
+                  {
+                    return (
+                      <button
+                        disabled={value.daDat}
+                        key={value.soGhe}
+                        className={`${classGheDaDat} ${classGheDangDat}`}
+                        onClick={() => handleSeat(value)}
+                      >
+                        {value.soGhe}
+                      </button>
                     );
-                    if (indexGheDangDat !== -1) {
-                      classGheDangDat = "gheDangChon";
-                    }
-                    {
-                      return (
-                        <td
-                          key={value.soGhe}
-                          className={`${classGheDaDat} ${classGheDangDat}`}
-                          onClick={() => handleSeat(value)}
-                        >
-                          {value.soGhe}
-                        </td>
-                      );
-                    }
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                  }
+                })}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -6,7 +6,7 @@ import ThongTinDatVe from "./ThongTinDatVe";
 export default class BTDatVe extends Component {
   render() {
     return (
-      <div className="App container relative">
+      <div className="App container relative" style={{ height: "1000px" }}>
         <img src="./images/DatVe/bgmovie.jpg" className="absolute bgflim"></img>
         <div className="flex">
           <div className="w-3/5 ">
